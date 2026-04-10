@@ -7,7 +7,7 @@
     <meta name="description" content="Nikola Milic — The Euroshredder. San Diego-based guitar virtuoso, instructor, performer and recording artist specializing in neo-classical metal, hard rock, blues, and jazz.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================
            CSS CUSTOM PROPERTIES
@@ -117,6 +117,17 @@
             color: var(--accent);
         }
 
+        .nav-logo em {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: 8px;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -178,52 +189,49 @@
            ============================================ */
         .hero {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            text-align: center;
             overflow: hidden;
             padding-top: var(--nav-height);
-            padding-bottom: 80px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
             background: var(--bg-primary);
         }
 
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('assets/images/main-site/nm-the-euroshredder.png') center 25% / contain no-repeat;
+        .hero-image {
+            width: 100%;
+            max-height: 85vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            background: var(--bg-primary);
         }
 
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 10, 15, 0.15) 0%, rgba(10, 10, 15, 0.5) 45%, rgba(10, 10, 15, 0.95) 75%, var(--bg-primary) 100%);
+        .hero-image img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0;
+            animation: fadeIn 1.2s 0.2s forwards;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
+            text-align: center;
+            padding: 48px 24px 64px;
+            background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
 
         .hero-name {
-            font-family: var(--font-display);
-            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 12vw, 8rem);
             font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -2px;
-            text-transform: uppercase;
+            line-height: 0.9;
             margin-bottom: 16px;
+            color: var(--text-primary);
             opacity: 0;
-            animation: fadeUp 0.8s 0.2s forwards;
+            animation: fadeUp 0.8s 0.4s forwards;
         }
 
         .hero-name .accent {
@@ -235,34 +243,34 @@
 
         .hero-tagline {
             font-family: var(--font-accent);
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             font-weight: 700;
             font-style: italic;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             opacity: 0;
-            animation: fadeUp 0.8s 0.4s forwards;
+            animation: fadeUp 0.8s 0.6s forwards;
         }
 
         .hero-location {
             font-family: var(--font-display);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 400;
             letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             opacity: 0;
-            animation: fadeUp 0.8s 0.6s forwards;
+            animation: fadeUp 0.8s 0.8s forwards;
         }
 
         .hero-subtitle {
             font-size: 1rem;
             color: var(--text-muted);
             max-width: 500px;
-            margin: 0 auto 48px;
+            margin: 0 auto 36px;
             opacity: 0;
-            animation: fadeUp 0.8s 0.8s forwards;  /* hero-subtitle */
+            animation: fadeUp 0.8s 1s forwards;
         }
 
         .hero-cta {
@@ -271,7 +279,7 @@
             justify-content: center;
             flex-wrap: wrap;
             opacity: 0;
-            animation: fadeUp 0.8s 1s forwards;
+            animation: fadeUp 0.8s 1.2s forwards;
         }
 
         @keyframes fadeUp {
@@ -1025,7 +1033,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="nav-logo">Nikola <span>Milic</span></a>
+            <a href="#" class="nav-logo">Nikola <span>Milic</span> <em>The Euroshredder</em></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#bio">Bio</a></li>
@@ -1043,7 +1051,9 @@
 
     <!-- Hero -->
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
+        <div class="hero-image">
+            <img src="assets/images/main-site/nm-the-euroshredder.png" alt="Nikola Milic — The Euroshredder">
+        </div>
         <div class="hero-content">
             <h1 class="hero-name">Nikola <span class="accent">Milic</span></h1>
             <p class="hero-tagline">The Euroshredder</p>
